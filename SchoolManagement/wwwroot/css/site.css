@@ -1,0 +1,42 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/* Ensure the table is styled with a border */
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #dee2e6;
+    }
+
+.table img {
+    border-radius: 5px;
+}
+
+.table .btn {
+    margin: 0 2px;
+}
+
+.table .img-thumbnail {
+    max-width: 100px;
+    height: auto;
+    border: 1px solid #dee2e6;
+    padding: 5px;
+}

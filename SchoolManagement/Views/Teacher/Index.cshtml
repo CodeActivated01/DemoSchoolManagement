@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SchoolManagement.Models.Teacher>
+
+@{
+    ViewData["Title"] = "Teachers";
+}
+
+<h2>Teachers</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Teacher</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered" id="teachersTable">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var teacher in Model)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(teacher.ImagePath))
+                        {
+                            <img src="@Url.Content("~/" + teacher.ImagePath)" alt="@teacher.Name" width="100" class="img-thumbnail" />
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>@teacher.Name</td>
+                    <td>@teacher.Age</td>
+                    <td>@teacher.Sex</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@teacher.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@teacher.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#teachersTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "language": {
+                    "emptyTable": "No data available in table"
+                },
+                "responsive": true
+            });
+        });
+    </script>
+}

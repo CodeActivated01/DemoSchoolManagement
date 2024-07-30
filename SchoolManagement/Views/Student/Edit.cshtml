@@ -1,0 +1,49 @@
+﻿@model SchoolManagement.Models.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h2>Edit Student</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Age" class="control-label"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Class" class="control-label"></label>
+        <input asp-for="Class" class="form-control" />
+        <span asp-validation-for="Class" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RollNumber" class="control-label"></label>
+        <input asp-for="RollNumber" class="form-control" />
+        <span asp-validation-for="RollNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageFile" class="control-label"></label>
+        <input asp-for="ImageFile" class="form-control-file" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SchoolManagement.Models.Subject>
+
+@{
+    ViewData["Title"] = "Subjects";
+}
+
+<h2>Subjects</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Subject</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered" id="subjectsTable">
+        <thead>
+            <tr>
+                <th>Subject Name</th>
+                <th>Class</th>
+                <th>Languages</th>
+                <th>Student</th>
+                <th>Teacher</th>
+                <th>Actions</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subject in Model)
+            {
+                <tr>
+                    <td>@subject.Name</td>
+                    <td>@subject.Class</td>
+                    <td>@subject.Language</td>
+                    <td>@foreach (var student in subject.Students)
+                        {
+                            @student.Name    
+                        }
+                        </td>
+                    <td>
+                        @foreach (var teacher in subject.Teachers)
+                        {
+                            @teacher.Name
+                        }
+                    </td>
+
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@subject.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@subject.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#subjectsTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "language": {
+                    "emptyTable": "No data available in table"
+                },
+                "responsive": true
+            });
+        });
+    </script>
+}

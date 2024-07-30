@@ -1,0 +1,44 @@
+﻿@model SchoolManagement.Models.Teacher
+
+@{
+    ViewData["Title"] = "Create Teacher";
+}
+
+<h2>Create Teacher</h2>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Age" class="control-label"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Sex" class="control-label"></label>
+        <input asp-for="Sex" class="form-control" />
+        <span asp-validation-for="Sex" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageFile" class="control-label"></label>
+        <input asp-for="ImageFile" class="form-control-file" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
